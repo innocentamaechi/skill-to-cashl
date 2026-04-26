@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Download — The V.I.R.A.L System PDF</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080807;
+    --black2: #0E0E0C;
+    --black3: #161614;
+    --black4: #1C1C1A;
+    --gold: #D4A030;
+    --gold2: #F0B835;
+    --gold-bg: rgba(212,160,48,0.08);
+    --cream: #F0E8D5;
+    --off: #C8BFA8;
+    --muted: #6A6458;
+    --red: #E53935;
+    --serif: 'Bebas Neue', sans-serif;
+    --body: 'Familjen Grotesk', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* GRAIN */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ANNOUNCEMENT BAR */
+  .ann-bar {
+    background: var(--red);
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #fff;
+    animation: pulse-bar 3s ease-in-out infinite;
+  }
+  @keyframes pulse-bar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  /* HERO WRAPPER */
+  .hero-wrap {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 0;
+    position: relative;
+  }
+
+  @media (max-width: 900px) {
+    .hero-wrap { grid-template-columns: 1fr; }
+    .hero-right { order: -1; border-left: none; border-bottom: 1px solid #2A2A24; }
+    .hero-left { padding: 48px 28px 60px; }
+  }
+
+  /* LEFT SIDE */
+  .hero-left {
+    padding: 72px 64px 80px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 0% 50%, rgba(212,160,48,0.06) 0%, transparent 70%),
+      linear-gradient(rgba(212,160,48,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,160,48,0.025) 1px, transparent 1px);
+    background-size: 100% 100%, 60px 60px, 60px 60px;
+    pointer-events: none;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .kicker-line {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .kicker-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.01em;
+  }
+  .hero-headline .accent {
+    color: var(--gold);
+    display: block;
+  }
+  .hero-headline .line-3 {
+    -webkit-text-stroke: 1px var(--cream);
+    color: transparent;
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--off);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* BULLETS */
+  .bullet-list {
+    list-style: none;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1E1E1A;
+    font-size: 16px;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .bullet-list li:first-child { border-top: 1px solid #1E1E1A; }
+  .bullet-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--gold-bg);
+    border: 1px solid rgba(212,160,48,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--gold);
+    margin-top: 1px;
+  }
+
+  /* PROOF STRIP */
+  .proof-strip {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .proof-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .proof-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* RIGHT SIDE — FORM */
+  .hero-right {
+    border-left: 1px solid #222220;
+    background: var(--black2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 44px;
+    position: relative;
+  }
+
+  .form-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .form-title {
+    font-family: var(--serif);
+    font-size: 38px;
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .form-title .f-gold { color: var(--gold); }
+
+  .form-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.65;
+  }
+
+  /* WHAT'S INSIDE BOX */
+  .inside-box {
+    background: var(--black3);
+    border: 1px solid #2A2A24;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+  }
+  .inside-head {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .inside-list {
+    list-style: none;
+  }
+  .inside-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--off);
+    padding: 5px 0;
+    line-height: 1.5;
+  }
+  .inside-check { color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+
+  /* FORM */
+  .opt-form { display: flex; flex-direction: column; gap: 12px; }
+
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .field-input {
+    background: var(--black3);
+    border: 1px solid #2A2A24;
+    color: var(--cream);
+    font-family: var(--body);
+    font-size: 15px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  .field-input::placeholder { color: var(--muted); font-size: 14px; }
+  .field-input:focus { border-color: var(--gold); }
+
+  .submit-btn {
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+    transition: background 0.15s, transform 0.12s;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+
+  .submit-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s, opacity 0.4s;
+    opacity: 0;
+  }
+  .submit-btn:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+
+  .privacy-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+  .privacy-note strong { color: var(--off); }
+
+  /* URGENCY BELOW FORM */
+  .urgency-widget {
+    margin-top: 20px;
+    border: 1px solid rgba(212,160,48,0.2);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold-bg);
+  }
+  .urgency-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: blink 1.2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  .urgency-text {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* SOCIAL PROOF BAND */
+  .proof-band {
+    background: var(--black3);
+    border-top: 1px solid #1E1E1A;
+    border-bottom: 1px solid #1E1E1A;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .band-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .band-icon { font-size: 18px; }
+
+  /* WHAT INSIDE SECTION */
+  .inside-section {
+    padding: 80px 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .inside-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 72px);
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 48px;
+  }
+  .inside-section h2 span { color: var(--gold); }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: #1E1E1A;
+    border: 1px solid #1E1E1A;
+  }
+  .module-card {
+    background: var(--black);
+    padding: 32px 28px;
+    transition: background 0.18s;
+  }
+  .module-card:hover { background: var(--black3); }
+  .module-num {
+    font-family: var(--serif);
+    font-size: 52px;
+    color: var(--gold);
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .module-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .module-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* WHO IT'S FOR */
+  .who-section {
+    padding: 0 56px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #1E1E1A;
+    border: 1px solid #1E1E1A;
+  }
+  @media (max-width: 600px) {
+    .who-grid { grid-template-columns: 1fr; }
+    .inside-section, .who-section { padding-left: 28px; padding-right: 28px; }
+    .proof-band { gap: 24px; padding: 20px 24px; }
+  }
+  .who-col {
+    background: var(--black2);
+    padding: 36px 32px;
+  }
+  .who-col.right { background: var(--black3); }
+  .who-head {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .who-head.yes { color: var(--gold); }
+  .who-head.no { color: var(--muted); }
+  .who-list { list-style: none; }
+  .who-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--off);
+    padding: 10px 0;
+    border-bottom: 1px solid #1E1E1A;
+    line-height: 1.5;
+  }
+  .who-list li:last-child { border-bottom: none; }
+
+  /* BOTTOM CTA */
+  .bottom-cta {
+    background: var(--gold);
+    padding: 72px 40px;
+    text-align: center;
+  }
+  .bottom-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 72px);
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .bottom-cta p {
+    font-size: 16px;
+    color: rgba(8,8,7,0.65);
+    margin-bottom: 36px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dark-btn {
+    display: inline-block;
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 18px 52px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: background 0.15s, transform 0.12s;
+  }
+  .dark-btn:hover { background: var(--black3); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    padding: 36px 40px;
+    border-top: 1px solid #1E1E1A;
+    text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--muted); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+  /* SUCCESS STATE */
+  .success-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+    min-height: 300px;
+  }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 24px;
+    color: var(--gold);
+  }
+  .success-title {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .success-sub {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ANN BAR -->
+<div class="ann-bar">🔥 247 people downloaded this in the last 48 hours — Free for a limited time</div>
+
+<!-- HERO -->
+<div class="hero-wrap">
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="kicker">
+      <div class="kicker-line"></div>
+      <span class="kicker-text">Free PDF Download · No Credit Card · Instant Access</span>
+    </div>
+
+    <h1 class="hero-headline">
+      TURN
+      <span class="accent">ANY TREND</span>
+      <span class="line-3">INTO MONEY</span>
+    </h1>
+
+    <p class="hero-sub">
+      The exact 5-step system I used to extract ₦40,000 from the Bon Bread drama in 4 days — using AI, zero followers, and no product of my own.
+    </p>
+
+    <ul class="bullet-list">
+      <li>
+        <span class="bullet-icon">✓</span>
+        Works for any trending topic in Nigeria — politics, scandals, celebrity drama, product fails
+      </li>
+      <li>
+        <span class="bullet-icon">✓</span>
+        No following required — the system uses borrowed attention
+      </li>
+      <li>
+        <span class="bullet-icon">✓</span>
+        50 copy-paste AI prompts included — write nothing from scratch
+      </li>
+      <li>
+        <span class="bullet-icon">✓</span>
+        Full Bon Bread case study with real numbers, real screenshots, real results
+      </li>
+      <li>
+        <span class="bullet-icon">✓</span>
+        Read in 20 minutes. Run your first campaign tonight.
+      </li>
+    </ul>
+
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">847+</div>
+        <div class="proof-label">Downloaded</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">₦40K</div>
+        <div class="proof-label">Made in 4 days</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">5</div>
+        <div class="proof-label">Steps total</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — FORM -->
+  <div class="hero-right">
+    <div id="form-container">
+      <div class="form-eyebrow">Get your free copy now</div>
+      <div class="form-title">The V.I.R.A.L<br><span class="f-gold">System PDF</span></div>
+      <div class="form-sub">Enter your details below. We'll send access directly to your WhatsApp — no email inbox to dig through.</div>
+
+      <div class="inside-box">
+        <div class="inside-head">What's inside the PDF</div>
+        <ul class="inside-list">
+          <li><span class="inside-check">→</span> The V.I.R.A.L 5-step framework (full breakdown)</li>
+          <li><span class="inside-check">→</span> Bon Bread case study with actual revenue data</li>
+          <li><span class="inside-check">→</span> 50 AI prompts you can copy-paste immediately</li>
+          <li><span class="inside-check">→</span> The funnel sequence that converts cold leads</li>
+          <li><span class="inside-check">→</span> 7-day sprint to your first ₦50K</li>
+        </ul>
+      </div>
+
+      <form class="opt-form" onsubmit="handleSubmit(event)">
+        <div class="field-group">
+          <label class="field-label">Your first name</label>
+          <input class="field-input" type="text" placeholder="What do we call you?" required id="name-input">
+        </div>
+        <div class="field-group">
+          <label class="field-label">WhatsApp number</label>
+          <input class="field-input" type="tel" placeholder="08XXXXXXXXX" required id="phone-input">
+        </div>
+        <button class="submit-btn" type="submit">
+          Send Me the Free PDF →
+        </button>
+        <p class="privacy-note">
+          <strong>100% Free.</strong> Your number is safe — we don't sell data, we don't spam. We send you the PDF and the occasional insight that's worth your time.
+        </p>
+      </form>
+
+      <div class="urgency-widget">
+        <div class="urgency-dot"></div>
+        <div class="urgency-text">19 people viewing this page right now</div>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're In.</div>
+      <p class="success-sub">Check your WhatsApp — we're sending your PDF right now. While you wait, scroll down to see what's inside.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- SOCIAL PROOF BAND -->
+<div class="proof-band">
+  <div class="band-item"><span class="band-icon">📲</span> Delivered directly to WhatsApp</div>
+  <div class="band-item"><span class="band-icon">⚡</span> Instant access — no waiting</div>
+  <div class="band-item"><span class="band-icon">🔒</span> Your info stays private</div>
+  <div class="band-item"><span class="band-icon">₦0</span> Completely free — no hidden charge</div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<div class="inside-section">
+  <h2 class="reveal">Inside the PDF — <span>No Filler.</span><br>Just the System.</h2>
+  <div class="modules-grid">
+    <div class="module-card reveal">
+      <div class="module-num">01</div>
+      <div class="module-title">The Attention Intercept Method</div>
+      <p class="module-desc">How to identify which trending topics are worth monetizing and which ones will waste your time. The filter that saves hours and makes you fast.</p>
+    </div>
+    <div class="module-card reveal">
+      <div class="module-num">02</div>
+      <div class="module-title">The V.I.R.A.L Framework — Full Breakdown</div>
+      <p class="module-desc">Validate, Interpret, Reframe, Amplify, Launch. Each step explained with examples, so you can apply it to the next trend before the window closes.</p>
+    </div>
+    <div class="module-card reveal">
+      <div class="module-num">03</div>
+      <div class="module-title">50 AI Prompts That Print Money</div>
+      <p class="module-desc">Copy. Paste. Output. These are the exact prompts used to generate hooks, lead magnets, sales copy, and WhatsApp sequences in minutes — not hours.</p>
+    </div>
+    <div class="module-card reveal">
+      <div class="module-num">04</div>
+      <div class="module-title">The Bon Bread Case Study</div>
+      <p class="module-desc">Full walk-through of how the Bon Bread situation became a ₦40,000 income campaign in 4 days. Every post, every step, real numbers. Nothing hidden.</p>
+    </div>
+    <div class="module-card reveal">
+      <div class="module-num">05</div>
+      <div class="module-title">The 3-Tier Funnel Blueprint</div>
+      <p class="module-desc">How to structure the flow from free content → WhatsApp lead → paid offer. The sequence that turns attention into buyers without being pushy or desperate.</p>
+    </div>
+    <div class="module-card reveal">
+      <div class="module-num">06</div>
+      <div class="module-title">Your 7-Day Sprint Plan</div>
+      <p class="module-desc">Day-by-day. What to do Monday through Sunday to go from no campaign to first sales. No guesswork — just a sequence you follow.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<div class="who-section">
+  <div class="who-grid">
+    <div class="who-col reveal">
+      <div class="who-head yes">This PDF is for you if —</div>
+      <ul class="who-list">
+        <li>✓ &nbsp; You watch trends blow up and wish you could profit from them</li>
+        <li>✓ &nbsp; You want to use AI as an income tool, not just a writing assistant</li>
+        <li>✓ &nbsp; You have under 1,000 followers and want to make money anyway</li>
+        <li>✓ &nbsp; You're tired of "posting consistently" with nothing to show</li>
+        <li>✓ &nbsp; You want a repeatable system — not a one-time trick</li>
+      </ul>
+    </div>
+    <div class="who-col right reveal">
+      <div class="who-head no">Don't download if —</div>
+      <ul class="who-list">
+        <li>✕ &nbsp; You want to read it and do absolutely nothing with it</li>
+        <li>✕ &nbsp; You think making money online requires years of experience</li>
+        <li>✕ &nbsp; You need perfect conditions before you start (they never come)</li>
+        <li>✕ &nbsp; You're looking for a get-rich-quick button with zero effort</li>
+        <li>✕ &nbsp; You've already got a working system that's making you ₦100K/month</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>The Next Trend<br>Is Coming Tonight.</h2>
+  <p>Download the system now and you'll know exactly what to do when it does.</p>
+  <a class="dark-btn" href="#" onclick="document.getElementById('phone-input').focus(); return false;">Download Free PDF — Right Now →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>The V.I.R.A.L System PDF — Free Resource. We respect your privacy and will never sell or share your contact information. Results in this document are real and documented — individual results will vary based on execution, niche, and market timing.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('name-input').value;
+    const phone = document.getElementById('phone-input').value;
+
+    // Replace this URL with your actual WhatsApp API or Paystack/form handler
+    const waLink = `https://wa.me/2349065013451?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20PDF.%20My%20name%20is%20${encodeURIComponent(name)}%20and%20my%20number%20is%20${encodeURIComponent(phone)}`;
+
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('success-state').style.display = 'flex';
+
+    // Auto-redirect to WhatsApp after 1.5s
+    setTimeout(() => { window.open(waLink, '_blank'); }, 1500);
+  }
+
+  // Fake live counter — creates urgency
+  const viewers = [19, 23, 17, 21, 25, 18, 22, 20, 24, 16];
+  let idx = 0;
+  setInterval(() => {
+    const el = document.querySelector('.urgency-text');
+    if (el) { idx = (idx + 1) % viewers.length; el.textContent = `${viewers[idx]} people viewing this page right now`; }
+  }, 7000);
+</script>
+
+</body>
+</html>

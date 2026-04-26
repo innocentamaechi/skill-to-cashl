@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Income Engine — Turn Trends Into ₦100K Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96B;
+    --gold-dim: #8A6E2F;
+    --ink: #0C0C0A;
+    --ink-2: #111110;
+    --ink-3: #1A1A17;
+    --ink-4: #232320;
+    --off-white: #F0EBE0;
+    --cream: #E8E0CC;
+    --muted: #6B6760;
+    --muted-2: #4A4845;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--off-white);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--gold);
+    color: var(--ink);
+    text-align: center;
+    padding: 10px 24px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 100px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 600;
+    line-height: 1.0;
+    color: var(--off-white);
+    max-width: 900px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--cream);
+    opacity: 0.75;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+    animation: fadeUp 0.9s 0.3s ease both;
+    font-weight: 300;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 18px 52px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cta-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .cta-note {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1.2s 0.8s ease both;
+  }
+  .scroll-indicator span { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+
+  /* ── PROOF BAR ── */
+  .proof-bar {
+    border-top: 1px solid var(--ink-4);
+    border-bottom: 1px solid var(--ink-4);
+    background: var(--ink-2);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+  .proof-item {
+    text-align: center;
+  }
+  .proof-number {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .proof-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+  .proof-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--ink-4);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 24px; }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .container-wide {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-headline {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--off-white);
+    margin-bottom: 28px;
+  }
+  .section-headline em { font-style: italic; color: var(--gold); }
+
+  .body-text {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  /* ── DIVIDER ── */
+  .gold-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 60px;
+    opacity: 0.5;
+  }
+  .gold-rule.left { margin: 0 0 60px; }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-bg {
+    background: var(--ink-2);
+    border-top: 1px solid var(--ink-4);
+    border-bottom: 1px solid var(--ink-4);
+  }
+
+  .truth-list {
+    list-style: none;
+    margin: 36px 0;
+  }
+  .truth-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--ink-4);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+  .truth-list li:last-child { border-bottom: none; }
+  .truth-marker {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  /* ── STORY SECTION ── */
+  .story-quote {
+    border-left: 2px solid var(--gold);
+    padding: 28px 0 28px 36px;
+    margin: 48px 0;
+  }
+  .story-quote p {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.4;
+  }
+
+  /* ── FRAMEWORK ── */
+  .framework-bg {
+    background: var(--ink-2);
+    border-top: 1px solid var(--ink-4);
+    border-bottom: 1px solid var(--ink-4);
+  }
+
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--ink-4);
+    border: 1px solid var(--ink-4);
+    margin-top: 48px;
+  }
+  .framework-step {
+    background: var(--ink-2);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+  .framework-step:hover { background: var(--ink-3); }
+  .step-letter {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.25;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 10px;
+  }
+  .step-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--ink-4);
+    border: 1px solid var(--ink-4);
+    margin-top: 48px;
+  }
+  .deliverable-card {
+    background: var(--ink);
+    padding: 36px 32px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .deliverable-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .deliverable-card:hover { background: var(--ink-2); }
+  .deliverable-card:hover::before { opacity: 1; }
+  .deliverable-number {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .deliverable-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--off-white);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .deliverable-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonial-bg {
+    background: var(--ink-2);
+    border-top: 1px solid var(--ink-4);
+    border-bottom: 1px solid var(--ink-4);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .testimonial-card {
+    border: 1px solid var(--ink-4);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-family: var(--serif);
+    font-size: 72px;
+    color: var(--gold);
+    opacity: 0.15;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--ink-4);
+    border: 1px solid var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--off-white);
+  }
+  .author-title {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── FOR WHO ── */
+  .for-who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--ink-4);
+    border: 1px solid var(--ink-4);
+    margin-top: 48px;
+  }
+  @media (max-width: 600px) {
+    .for-who-grid { grid-template-columns: 1fr; }
+    .hero-headline { font-size: 38px; }
+    .proof-divider { display: none; }
+  }
+  .for-who-col {
+    background: var(--ink);
+    padding: 36px 32px;
+  }
+  .for-who-col.right { background: var(--ink-2); }
+  .for-who-head {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .for-who-head.yes { color: var(--gold); }
+  .for-who-head.no { color: var(--muted); }
+  .for-who-list { list-style: none; }
+  .for-who-list li {
+    display: flex;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.8;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ink-4);
+    line-height: 1.55;
+  }
+  .for-who-list li:last-child { border-bottom: none; }
+  .check { color: var(--gold); font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+  .cross { color: var(--muted-2); font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── PRICE BOX ── */
+  .price-section {
+    text-align: center;
+  }
+  .price-box {
+    border: 1px solid var(--gold-dim);
+    padding: 60px 48px;
+    max-width: 620px;
+    margin: 60px auto 0;
+    position: relative;
+  }
+  .price-box::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .price-tag {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .price-amount {
+    font-family: var(--serif);
+    font-size: clamp(56px, 10vw, 88px);
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-period {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    letter-spacing: 0.06em;
+  }
+  .price-breakdown {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .price-breakdown li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-4);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.85;
+  }
+  .price-breakdown li:last-child { border-bottom: none; }
+  .price-check { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+  .cta-primary-large {
+    display: block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 20px 52px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: background 0.2s, transform 0.15s;
+    text-align: center;
+  }
+  .cta-primary-large:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── GUARANTEE ── */
+  .guarantee-strip {
+    background: var(--ink-3);
+    border-top: 1px solid var(--ink-4);
+    border-bottom: 1px solid var(--ink-4);
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .guarantee-icon {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 28px;
+  }
+
+  /* ── URGENCY BAR ── */
+  .urgency {
+    background: var(--ink-4);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 24px;
+    text-align: center;
+  }
+  .urgency-text {
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .urgency-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid var(--ink-4);
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .footer-note {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── FINAL CTA STRIP ── */
+  .final-cta {
+    background: var(--gold);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .final-cta .headline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .final-cta .sub {
+    font-size: 16px;
+    color: rgba(12,12,10,0.65);
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-dark {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 18px 52px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 16px;
+  }
+  .cta-dark:hover { background: var(--ink-4); transform: translateY(-2px); }
+  .final-note {
+    font-size: 13px;
+    color: rgba(12,12,10,0.5);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── HORIZONTAL RULE ── */
+  hr.section-rule {
+    border: none;
+    border-top: 1px solid var(--ink-4);
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-row {
+    display: flex;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--ink-4);
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-before {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--muted-2);
+    line-height: 1.55;
+  }
+  .compare-arrow { color: var(--gold); flex-shrink: 0; font-size: 18px; }
+  .compare-after {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.55;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">⚡ Limited Access — Only 50 Spots Available This Month</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-glow"></div>
+
+  <div class="badge">The AI Income Engine</div>
+
+  <p class="hero-eyebrow">While everyone was arguing about bread…</p>
+
+  <h1 class="hero-headline">
+    I Built a System That Turns <em>Any Trend</em> Into a ₦100K Machine
+  </h1>
+
+  <p class="hero-sub">
+    One case study. One framework. A repeatable system that extracts money from attention — whether you have a product, a skill, or nothing at all.
+  </p>
+
+  <div class="hero-cta-group">
+    <a class="cta-primary" href="#pricing">Get the AI Income Engine →</a>
+    <span class="cta-note">One-time access · No recurring fees · Instant delivery</span>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Read on</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="proof-number">847+</div>
+    <div class="proof-label">Members inside</div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div class="proof-number">₦38M+</div>
+    <div class="proof-label">Made by members</div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div class="proof-number">24hrs</div>
+    <div class="proof-label">Average first result</div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div class="proof-number">100%</div>
+    <div class="proof-label">Actionable. No fluff.</div>
+  </div>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-bg">
+  <div class="container">
+    <p class="section-label reveal">The hard truth</p>
+    <h2 class="section-headline reveal">You're not broke because of bad luck.<br><em>You're broke because of bad strategy.</em></h2>
+    <div class="gold-rule left"></div>
+
+    <p class="body-text reveal">
+      Every single day, millions of naira in opportunities trend past your timeline. The Bon Bread situation. The EFCC arrests. The CBN policy. The celebrity scandal. Somebody always gets paid from these moments.
+    </p>
+    <p class="body-text reveal">
+      Just never you. Because nobody ever taught you the system.
+    </p>
+
+    <ul class="truth-list">
+      <li class="reveal">
+        <span class="truth-marker">01</span>
+        You watch trending topics and think "interesting" — instead of "how do I make money from this?"
+      </li>
+      <li class="reveal">
+        <span class="truth-marker">02</span>
+        You create content for engagement — but engagement doesn't pay rent. Sales does.
+      </li>
+      <li class="reveal">
+        <span class="truth-marker">03</span>
+        You've tried "posting consistently" for months with nothing to show for it — because content without a funnel is charity.
+      </li>
+      <li class="reveal">
+        <span class="truth-marker">04</span>
+        You know AI is powerful, but you're using it to write captions — not to build income systems.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section>
+  <div class="container">
+    <p class="section-label reveal">The shift</p>
+    <h2 class="section-headline reveal">The Bon Bread Moment<br>That Changed Everything</h2>
+    <div class="gold-rule left"></div>
+
+    <p class="body-text reveal">
+      A random TikTok video about bread staying fresh for two months triggered a ₦50M lawsuit. Within 48 hours it was the most talked-about story in Nigeria. And while millions argued about chemicals and food safety…
+    </p>
+
+    <div class="story-quote reveal">
+      <p>"I was building a lead machine. In under 24 hours. Using nothing but AI, a framework, and the attention the story had already generated."</p>
+    </div>
+
+    <p class="body-text reveal">
+      That moment crystallised what I'd been learning for years: the difference between people who make money online and people who don't isn't skill, connections, or even content quality.
+    </p>
+    <p class="body-text reveal">
+      It's the ability to see a trending situation and immediately know: <strong style="color: var(--off-white); font-weight: 500;">how do I extract value from this?</strong>
+    </p>
+    <p class="body-text reveal">
+      The AI Income Engine is the exact system I built. And I've packaged every step so you can replicate it — with any trending situation, any niche, any time.
+    </p>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="framework-bg">
+  <div class="container-wide">
+    <div style="text-align:center; margin-bottom: 12px;">
+      <p class="section-label reveal">The methodology</p>
+      <h2 class="section-headline reveal">The V.I.R.A.L System — <em>Your Extraction Engine</em></h2>
+      <p class="body-text reveal" style="max-width: 560px; margin: 0 auto;">Five steps. One system. Infinite applications. This is the framework that turns any trending moment into content, leads, and income.</p>
+    </div>
+    <div class="framework-grid">
+      <div class="framework-step reveal">
+        <div class="step-letter">V</div>
+        <div class="step-title">Validate Attention</div>
+        <p class="step-desc">If people are talking about it, it's already valuable. You don't create the attention — you intercept it. Learn to spot what's worth monetizing before the window closes.</p>
+      </div>
+      <div class="framework-step reveal">
+        <div class="step-letter">I</div>
+        <div class="step-title">Interpret Opportunity</div>
+        <p class="step-desc">Ask the question most people never think to ask: "What fear, desire, or curiosity is underneath this?" The answer is where the money hides. AI helps you find it in minutes.</p>
+      </div>
+      <div class="framework-step reveal">
+        <div class="step-letter">R</div>
+        <div class="step-title">Reframe Narrative</div>
+        <p class="step-desc">Turn the raw story into a business lesson, an identity statement, or a contrast that positions you as the person who sees what others miss. This is your authority builder.</p>
+      </div>
+      <div class="framework-step reveal">
+        <div class="step-letter">A</div>
+        <div class="step-title">Amplify with AI</div>
+        <p class="step-desc">You use the exact prompts I use — tested, refined, and ready to copy-paste — to generate hooks, angles, posts, lead magnets, and sales copy in minutes. Not hours. Minutes.</p>
+      </div>
+      <div class="framework-step reveal">
+        <div class="step-letter">L</div>
+        <div class="step-title">Launch Offer</div>
+        <p class="step-desc">Funnel the attention into a simple product or service. A ₦2K SLO. A ₦25K coaching slot. A WhatsApp community. The framework works for all of them — you choose the level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section>
+  <div class="container-wide">
+    <div style="text-align:center; margin-bottom: 12px;">
+      <p class="section-label reveal">What's inside</p>
+      <h2 class="section-headline reveal">Everything You Need to <em>Print Your First ₦100K</em></h2>
+    </div>
+    <div class="deliverables-grid">
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Module 01</div>
+        <div class="deliverable-title">The Trend-to-Cash Blueprint</div>
+        <p class="deliverable-desc">Step-by-step breakdown of the exact process for identifying, validating, and monetizing any trending situation — with zero guesswork and no wasted time.</p>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Module 02</div>
+        <div class="deliverable-title">50 AI Prompts That Print Money</div>
+        <p class="deliverable-desc">The exact prompts I use to generate hooks, content angles, lead magnet outlines, sales copy, and WhatsApp scripts in under 30 minutes per campaign. Copy. Paste. Profit.</p>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Module 03</div>
+        <div class="deliverable-title">Plug-and-Play Funnel Templates</div>
+        <p class="deliverable-desc">Landing page copy, WhatsApp sequences, Selar product pages, and post-sale upsell scripts — all pre-written. Edit the details. Deploy in an afternoon.</p>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Module 04</div>
+        <div class="deliverable-title">The Bon Bread Case Study (Full Breakdown)</div>
+        <p class="deliverable-desc">Walk through every decision I made — from the first post to the WhatsApp close — with actual screenshots, copy, and revenue data. This alone is worth 10x the price.</p>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Module 05</div>
+        <div class="deliverable-title">The 7-Day Sprint System</div>
+        <p class="deliverable-desc">Day-by-day execution plan: idea to first sale in a week. No overwhelm, no theory — just a precise daily action sequence designed to get you results before your motivation fades.</p>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-number">Bonus</div>
+        <div class="deliverable-title">Live Teardown Access (WhatsApp)</div>
+        <p class="deliverable-desc">Join a private WhatsApp group where I break down real-time opportunities as they trend — showing you exactly how I'd monetize each one. This is the MBA you never got.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="problem-bg">
+  <div class="container">
+    <p class="section-label reveal">Before vs after</p>
+    <h2 class="section-headline reveal">What Changes When You Have <em>The System</em></h2>
+    <div class="gold-rule left"></div>
+
+    <div class="compare-row reveal">
+      <div class="compare-before">Watching trends and feeling frustrated that others are profiting</div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-after">Spotting trends and immediately mapping a monetization play</div>
+    </div>
+    <div class="compare-row reveal">
+      <div class="compare-before">Posting content and hoping someone buys something</div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-after">Running content that feeds a funnel that converts on autopilot</div>
+    </div>
+    <div class="compare-row reveal">
+      <div class="compare-before">Spending hours writing copy that doesn't convert</div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-after">Using 3 prompts to generate high-converting copy in 20 minutes</div>
+    </div>
+    <div class="compare-row reveal">
+      <div class="compare-before">Starting from zero with every new product or campaign</div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-after">Running the same V.I.R.A.L system — every time, for any niche</div>
+    </div>
+    <div class="compare-row reveal">
+      <div class="compare-before">Knowing AI is powerful but not knowing how to make it generate income</div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-after">Using AI as an income engine — prompts, funnels, scripts, all tested</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="container-wide">
+    <div style="text-align:center; margin-bottom: 12px;">
+      <p class="section-label reveal">Honest qualifier</p>
+      <h2 class="section-headline reveal">This Is For You. <em>Or It Isn't.</em></h2>
+    </div>
+    <div class="for-who-grid">
+      <div class="for-who-col reveal">
+        <div class="for-who-head yes">This is for you if —</div>
+        <ul class="for-who-list">
+          <li><span class="check">✓</span>You understand that speed is the difference between the person who profits and the person who watches</li>
+          <li><span class="check">✓</span>You're willing to execute — not just consume information</li>
+          <li><span class="check">✓</span>You have a phone and internet access (that's all the tools you need)</li>
+          <li><span class="check">✓</span>You want a system you can run repeatedly — not a one-time trick</li>
+          <li><span class="check">✓</span>You're serious about building a real income online, not just "trying things"</li>
+        </ul>
+      </div>
+      <div class="for-who-col right reveal">
+        <div class="for-who-head no">This is NOT for you if —</div>
+        <ul class="for-who-list">
+          <li><span class="cross">✕</span>You're looking for a magic button that makes money while you sleep with zero effort</li>
+          <li><span class="cross">✕</span>You'll buy this, watch it once, and do nothing</li>
+          <li><span class="cross">✕</span>You think ₦100K is too ambitious and want to stay comfortable at ₦10K</li>
+          <li><span class="cross">✕</span>You need permission to start — this system requires you to move before you're ready</li>
+          <li><span class="cross">✕</span>You're more interested in debating business theory than executing it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-bg">
+  <div class="container-wide">
+    <div style="text-align:center; margin-bottom:12px;">
+      <p class="section-label reveal">Real results</p>
+      <h2 class="section-headline reveal">People Who Stopped Watching<br>and <em>Started Extracting</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"I made back my investment in 36 hours. Just ran the framework on a CBN announcement everyone was talking about. Three posts, a WhatsApp link, and ₦47,000 in sales."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AO</div>
+          <div>
+            <div class="author-name">Adaeze O.</div>
+            <div class="author-title">Digital marketer, Lagos</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"I had zero followers. I ran the system with a trending celebrity story, got 300 WhatsApp contacts in 4 days, and converted 22 into a ₦5K offer. That's ₦110,000. From nothing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">KM</div>
+          <div>
+            <div class="author-name">Khalid M.</div>
+            <div class="author-title">Content creator, Abuja</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"What hits different is that it's not a course about AI. It's a course about money. AI is just the tool. The prompts alone saved me probably 20 hours a week. I'm now running 3 simultaneous funnels."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">TF</div>
+          <div>
+            <div class="author-name">Tolu F.</div>
+            <div class="author-title">Entrepreneur, Port Harcourt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price-section" id="pricing">
+  <div class="container">
+    <p class="section-label reveal">Your investment</p>
+    <h2 class="section-headline reveal">One System. One Price.<br><em>Unlimited Applications.</em></h2>
+    <p class="body-text reveal" style="max-width: 540px; margin: 0 auto;">
+      Every day you don't have this system, a trend passes you by. The Bon Bread situation came and went. The next one is coming. Be ready.
+    </p>
+
+    <div class="price-box reveal">
+      <div class="price-tag">Complete AI Income Engine</div>
+      <div class="price-amount">₦100K</div>
+      <div class="price-period">One-time investment · Lifetime access</div>
+
+      <ul class="price-breakdown">
+        <li><span class="price-check">✓</span> V.I.R.A.L System — Full Framework (5 modules)</li>
+        <li><span class="price-check">✓</span> 50 AI Prompts That Print Money (copy-paste ready)</li>
+        <li><span class="price-check">✓</span> Plug-and-Play Funnel Templates (landing page, WhatsApp scripts, Selar copy)</li>
+        <li><span class="price-check">✓</span> Bon Bread Full Case Study with revenue breakdown</li>
+        <li><span class="price-check">✓</span> 7-Day Sprint Execution Plan (day-by-day)</li>
+        <li><span class="price-check">✓</span> Private WhatsApp Group — Live Trend Teardowns</li>
+        <li><span class="price-check">✓</span> Direct access to me for setup questions</li>
+      </ul>
+
+      <a class="cta-primary-large" href="#">Get Instant Access Now →</a>
+      <p style="font-size: 13px; color: var(--muted); margin-top: 16px; text-align: center;">Secure payment via Paystack · Instant delivery to your WhatsApp</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee-strip">
+  <div class="guarantee-icon">⬡</div>
+  <p class="section-label" style="text-align:center;">My Promise</p>
+  <h3 class="section-headline" style="text-align:center; max-width: 560px; margin: 12px auto 20px; font-size: clamp(24px, 4vw, 40px);">Run the system once.<br>If it doesn't work, I'll work with you until it does.</h3>
+  <p style="font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto; text-align: center; font-weight: 300; line-height: 1.7;">
+    This isn't a "no-questions-asked" refund — it's something stronger. A commitment that I don't let you fail. If you go through the material and execute and see no results, message me directly and I'll personally review your setup and fix what's broken.
+  </p>
+</div>
+
+<!-- URGENCY -->
+<div class="urgency">
+  <div class="urgency-text">⚡ 50 spots open this month · 31 remaining</div>
+  <div class="urgency-sub">Intake closes when spots fill — no exceptions, no waitlist</div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2 class="headline">The Next Trend Is Coming.<br>Will You Watch It — or Build From It?</h2>
+  <p class="sub">The only difference between your situation now and ₦100K from now is a decision made in the next 60 seconds.</p>
+  <a class="cta-dark" href="#pricing">Get the AI Income Engine — ₦100K →</a>
+  <br>
+  <span class="final-note">One-time payment · Instant access · No monthly fees</span>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">AI Income Engine</div>
+  <p class="footer-note">
+    Results vary by individual effort, market conditions, and consistency of execution. The case studies shown are real but not guaranteed outcomes. This system requires action — not passive consumption.
+  </p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

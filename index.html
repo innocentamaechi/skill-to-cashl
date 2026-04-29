@@ -580,6 +580,27 @@
   .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1407724268049550');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1407724268049550&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
 <body>
 
 <!-- ANN BAR -->
@@ -830,7 +851,7 @@
     const phone = document.getElementById('phone-input').value;
 
     // Replace this URL with your actual WhatsApp API or Paystack/form handler
-    const waLink = `https://wa.me/2348XXXXXXXXX?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20PDF.%20My%20name%20is%20${encodeURIComponent(name)}%20and%20my%20number%20is%20${encodeURIComponent(phone)}`;
+    const waLink = `https://wa.me/2349065013451?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20PDF.%20My%20name%20is%20${encodeURIComponent(name)}%20and%20my%20number%20is%20${encodeURIComponent(phone)}`;
 
     document.getElementById('form-container').style.display = 'none';
     document.getElementById('success-state').style.display = 'flex';
